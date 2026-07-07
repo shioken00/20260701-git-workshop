@@ -1,0 +1,418 @@
+/* ===================================================================
+   旅の足跡 — Design tokens
+   Motif: passport stamps & airmail correspondence
+=================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700;9..144,900&family=Work+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  --bg: #f3ecdd;
+  --bg-raised: #faf5ea;
+  --ink: #23211c;
+  --ink-soft: #59564c;
+  --navy: #16283d;
+  --navy-light: #24405c;
+  --stamp: #a8382f;
+  --gold: #b5891f;
+  --line: #d9cead;
+  --radius: 2px;
+  --max-w: 1080px;
+}
+
+* { box-sizing: border-box; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Work Sans', sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+  background-image:
+    radial-gradient(circle at 1px 1px, rgba(35,33,28,0.05) 1px, transparent 0);
+  background-size: 22px 22px;
+}
+
+h1, h2, h3 {
+  font-family: 'Fraunces', serif;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin: 0 0 0.4em;
+  color: var(--navy);
+}
+
+a {
+  color: var(--navy-light);
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 3px;
+}
+a:focus-visible, button:focus-visible, input:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 2px;
+}
+
+.mono { font-family: 'JetBrains Mono', monospace; }
+
+.wrap {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ---------- Header / Nav ---------- */
+.site-header {
+  background: var(--navy);
+  color: #f3ecdd;
+  border-bottom: 6px solid var(--stamp);
+}
+.site-header .wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 18px;
+  padding-bottom: 18px;
+}
+.brand {
+  font-family: 'Fraunces', serif;
+  font-weight: 900;
+  font-size: 1.4rem;
+  color: #f3ecdd;
+  text-decoration: none;
+  letter-spacing: 0.01em;
+}
+.brand span { color: var(--gold); }
+
+.nav-toggle {
+  display: none;
+  background: none;
+  border: 1px solid #f3ecdd88;
+  color: #f3ecdd;
+  padding: 8px 12px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  border-radius: var(--radius);
+}
+
+nav.site-nav ul {
+  display: flex;
+  gap: 28px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+nav.site-nav a {
+  color: #f3ecdd;
+  font-weight: 500;
+  font-size: 0.98rem;
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+  padding-bottom: 4px;
+}
+nav.site-nav a[aria-current="page"],
+nav.site-nav a:hover { border-bottom-color: var(--gold); }
+
+@media (max-width: 720px) {
+  .nav-toggle { display: inline-block; }
+  nav.site-nav {
+    display: none;
+    width: 100%;
+    border-top: 1px solid #ffffff22;
+  }
+  nav.site-nav.open { display: block; }
+  nav.site-nav ul {
+    flex-direction: column;
+    gap: 0;
+    padding: 10px 0;
+  }
+  nav.site-nav li { border-bottom: 1px solid #ffffff14; }
+  nav.site-nav a { display: block; padding: 12px 4px; }
+  .site-header .wrap { flex-wrap: wrap; }
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  padding: 72px 0 56px;
+  border-bottom: 1px solid var(--line);
+}
+.hero .eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.78rem;
+  color: var(--stamp);
+  display: block;
+  margin-bottom: 14px;
+}
+.hero h1 {
+  font-size: clamp(2.1rem, 5vw, 3.4rem);
+  max-width: 16ch;
+}
+.hero p.lead {
+  max-width: 56ch;
+  color: var(--ink-soft);
+  font-size: 1.08rem;
+}
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 48px;
+  align-items: center;
+}
+@media (max-width: 780px) {
+  .hero-grid { grid-template-columns: 1fr; }
+}
+
+/* ---------- Passport stamp (signature element) ---------- */
+.stamp {
+  width: 190px;
+  height: 190px;
+  border: 3px solid var(--stamp);
+  border-radius: 50%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--stamp);
+  transform: rotate(-9deg);
+  margin: 0 auto;
+  flex-shrink: 0;
+}
+.stamp::before {
+  content: "";
+  position: absolute;
+  inset: 8px;
+  border: 1.5px dashed var(--stamp);
+  border-radius: 50%;
+}
+.stamp .stamp-text {
+  text-align: center;
+  font-family: 'JetBrains Mono', monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.72rem;
+  line-height: 1.5;
+  font-weight: 500;
+}
+.stamp .stamp-country {
+  font-family: 'Fraunces', serif;
+  font-weight: 900;
+  font-size: 1.05rem;
+  letter-spacing: 0.02em;
+  display: block;
+  margin: 4px 0;
+}
+
+/* card-embedded smaller stamp */
+.stamp.small { width: 108px; height: 108px; }
+.stamp.small .stamp-country { font-size: 0.82rem; }
+.stamp.small .stamp-text { font-size: 0.58rem; }
+
+/* ---------- Section shell ---------- */
+section.block { padding: 56px 0; }
+section.block h2 {
+  font-size: clamp(1.6rem, 3.2vw, 2.2rem);
+  margin-bottom: 10px;
+}
+.section-intro {
+  color: var(--ink-soft);
+  max-width: 62ch;
+  margin-bottom: 36px;
+}
+
+/* ---------- Nav cards on index ---------- */
+.card-links {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+@media (max-width: 720px) { .card-links { grid-template-columns: 1fr; } }
+
+.nav-card {
+  background: var(--bg-raised);
+  border: 1px solid var(--line);
+  padding: 28px;
+  text-decoration: none;
+  color: var(--ink);
+  display: block;
+  position: relative;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.nav-card:hover { transform: translateY(-3px); box-shadow: 6px 6px 0 var(--navy); }
+.nav-card .tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+.nav-card h3 { margin-top: 8px; font-size: 1.4rem; }
+.nav-card p { color: var(--ink-soft); margin-bottom: 0; }
+
+/* ---------- 画像差し込み枠(フリー素材を後から追加する場所) ----------
+   使い方: <img> の src に指定されたファイル名で img/ フォルダに画像を置くだけ。
+   画像が無い間は点線枠とファイル名の案内が表示されます。 */
+.photo-slot {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border: 2px dashed var(--ink-soft);
+  background: repeating-linear-gradient(
+    45deg,
+    #e9e0cc, #e9e0cc 12px,
+    #f3ecdd 12px, #f3ecdd 24px
+  );
+}
+.photo-slot img.photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  position: relative;
+  z-index: 1;
+}
+.photo-slot .slot-label {
+  display: none;
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 10px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  background: rgba(243, 236, 221, 0.9);
+}
+.photo-slot.img-missing .photo { display: none; }
+.photo-slot.img-missing .slot-label { display: flex; }
+.photo-slot.wide { aspect-ratio: 16 / 9; }
+
+/* ---------- Stamp cards (visited countries) ---------- */
+.stamp-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 28px;
+}
+.stamp-card {
+  background: var(--bg-raised);
+  border: 1px solid var(--line);
+  overflow: hidden;
+}
+.stamp-card .card-body-row {
+  padding: 20px 24px 24px;
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+}
+.stamp-card .body h3 { font-size: 1.15rem; margin-bottom: 2px; }
+.stamp-card .body .date {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.78rem;
+  color: var(--stamp);
+  display: block;
+  margin-bottom: 8px;
+}
+.stamp-card .body p { margin: 0; color: var(--ink-soft); font-size: 0.95rem; }
+.stamp-card .coords {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  color: var(--ink-soft);
+  display: inline-block;
+  margin-top: 8px;
+}
+
+/* ---------- Airmail / postcard cards (wishlist) ---------- */
+.airmail-border {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    var(--navy) 0 14px,
+    #ffffff 14px 28px,
+    var(--stamp) 28px 42px,
+    #ffffff 42px 56px
+  );
+  height: 6px;
+}
+.postcard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 28px;
+}
+.postcard {
+  background: var(--bg-raised);
+  border: 1px dashed var(--ink-soft);
+  position: relative;
+  overflow: hidden;
+}
+.postcard .airmail-border { position: relative; top: 0; left: 0; right: 0; }
+.postcard-body { padding: 20px 22px 22px; }
+.postcard .priority {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--gold);
+  border: 1px solid var(--gold);
+  display: inline-block;
+  padding: 2px 8px;
+  margin-bottom: 10px;
+}
+.postcard h3 { font-size: 1.2rem; margin-bottom: 6px; }
+.postcard p { color: var(--ink-soft); margin: 0 0 10px; font-size: 0.95rem; }
+.postcard .coords {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  color: var(--ink-soft);
+}
+
+/* ---------- Map ---------- */
+.map-shell {
+  border: 1px solid var(--line);
+  background: var(--bg-raised);
+  padding: 10px;
+}
+#map {
+  height: 380px;
+  width: 100%;
+  filter: sepia(8%) saturate(92%);
+}
+.map-caption {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--ink-soft);
+  margin-top: 10px;
+}
+
+/* ---------- Footer ---------- */
+footer.site-footer {
+  background: var(--navy);
+  color: #f3ecdd;
+  padding: 32px 0;
+  margin-top: 40px;
+}
+footer.site-footer .wrap {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-size: 0.88rem;
+}
+footer.site-footer a { color: var(--gold); }
+
+.editable-note {
+  border-left: 3px solid var(--gold);
+  background: #fff8e6;
+  padding: 10px 16px;
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  margin: 24px 0;
+}

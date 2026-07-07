@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>行きたい場所 | 旅の足跡</title>
+<meta name="description" content="いつか訪れたい国や地域のリスト。">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a href="index.html" class="brand">旅の<span>足跡</span></a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="primary-nav">メニュー ☰</button>
+    <nav class="site-nav" id="primary-nav">
+      <ul>
+        <li><a href="index.html">トップ</a></li>
+        <li><a href="visited.html">行った国</a></li>
+        <li><a href="wishlist.html" aria-current="page">行きたい場所</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero" style="padding-bottom:32px;">
+    <div class="wrap">
+      <span class="eyebrow">Wishlist</span>
+      <h1>行きたい場所</h1>
+      <p class="lead">いつか訪れたい国・地域を、優先度つきの絵はがき風カードでまとめました。</p>
+    </div>
+  </section>
+
+  <section class="block" style="padding-top:32px;">
+    <div class="wrap">
+      <div class="editable-note">
+        編集メモ: 下のカードはサンプルです。行きたい場所・理由・優先度・座標を自分の希望に書き換えてください。
+      </div>
+
+      <div class="postcard-grid">
+        <div class="postcard">
+          <div class="airmail-border"></div>
+          <div class="photo-slot">
+            <img class="photo" src="img/wishlist-finland.jpg" alt="フィンランドのイメージ写真" onerror="this.parentElement.classList.add('img-missing')">
+            <span class="slot-label">📷 画像を追加<br>img/wishlist-finland.jpg<br>(推奨: 800×600px)</span>
+          </div>
+          <div class="postcard-body">
+            <span class="priority">Priority: High</span>
+            <h3>フィンランド(ロヴァニエミ)</h3>
+            <p>オーロラを実際に見てみたい。IT/通信分野が強い国としても関心がある。</p>
+            <span class="coords">66.5039, 25.7294</span>
+          </div>
+        </div>
+
+        <div class="postcard">
+          <div class="airmail-border"></div>
+          <div class="photo-slot">
+            <img class="photo" src="img/wishlist-siliconvalley.jpg" alt="シリコンバレーのイメージ写真" onerror="this.parentElement.classList.add('img-missing')">
+            <span class="slot-label">📷 画像を追加<br>img/wishlist-siliconvalley.jpg<br>(推奨: 800×600px)</span>
+          </div>
+          <div class="postcard-body">
+            <span class="priority">Priority: High</span>
+            <h3>アメリカ(シリコンバレー)</h3>
+            <p>研究開発の最前線を肌で感じたい。大学や企業の研究施設を見学してみたい。</p>
+            <span class="coords">37.3875, -122.0575</span>
+          </div>
+        </div>
+
+        <div class="postcard">
+          <div class="airmail-border"></div>
+          <div class="photo-slot">
+            <img class="photo" src="img/wishlist-rome.jpg" alt="ローマのイメージ写真" onerror="this.parentElement.classList.add('img-missing')">
+            <span class="slot-label">📷 画像を追加<br>img/wishlist-rome.jpg<br>(推奨: 800×600px)</span>
+          </div>
+          <div class="postcard-body">
+            <span class="priority">Priority: Medium</span>
+            <h3>イタリア(ローマ)</h3>
+            <p>歴史的建造物と食文化に触れたい。ゆっくり時間をかけて街を歩いてみたい。</p>
+            <span class="coords">41.9028, 12.4964</span>
+          </div>
+        </div>
+
+        <div class="postcard">
+          <div class="airmail-border"></div>
+          <div class="photo-slot">
+            <img class="photo" src="img/wishlist-newzealand.jpg" alt="ニュージーランドのイメージ写真" onerror="this.parentElement.classList.add('img-missing')">
+            <span class="slot-label">📷 画像を追加<br>img/wishlist-newzealand.jpg<br>(推奨: 800×600px)</span>
+          </div>
+          <div class="postcard-body">
+            <span class="priority">Priority: Medium</span>
+            <h3>ニュージーランド</h3>
+            <p>雄大な自然を体験したい。オーストラリア留学時に耳にした魅力に惹かれている。</p>
+            <span class="coords">-41.2865, 174.7762</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" style="padding-top:0;">
+    <div class="wrap">
+      <h2>行きたい場所マップ</h2>
+      <p class="section-intro">位置が明確な候補地を地図上にまとめています。</p>
+      <div class="map-shell">
+        <div id="map"></div>
+      </div>
+      <p class="map-caption">Map data &copy; OpenStreetMap contributors</p>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>&copy; 2026 旅の足跡 — 研究開発リテラシー 最終課題(個人制作)</span>
+    <span>Repository: <a href="#">GitHub</a></span>
+  </div>
+</footer>
+
+<script>
+  window.MAP_PINS = [
+    { name: "ロヴァニエミ(フィンランド)", lat: 66.5039, lng: 25.7294, note: "優先度: 高", color: "#b5891f" },
+    { name: "シリコンバレー(アメリカ)", lat: 37.3875, lng: -122.0575, note: "優先度: 高", color: "#b5891f" },
+    { name: "ローマ(イタリア)", lat: 41.9028, lng: 12.4964, note: "優先度: 中", color: "#b5891f" },
+    { name: "ニュージーランド", lat: -41.2865, lng: 174.7762, note: "優先度: 中", color: "#b5891f" }
+  ];
+</script>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="js/script.js"></script>
+</body>
+</html>

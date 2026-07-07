@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>行った国 | 旅の足跡</title>
+<meta name="description" content="これまで訪れた国と地域の記録。">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a href="index.html" class="brand">旅の<span>足跡</span></a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="primary-nav">メニュー ☰</button>
+    <nav class="site-nav" id="primary-nav">
+      <ul>
+        <li><a href="index.html">トップ</a></li>
+        <li><a href="visited.html" aria-current="page">行った国</a></li>
+        <li><a href="wishlist.html">行きたい場所</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero" style="padding-bottom:32px;">
+    <div class="wrap">
+      <span class="eyebrow">Visited</span>
+      <h1>行った国</h1>
+      <p class="lead">実際に訪れた国・地域の記録です。留学やアルバイトを通じて出会った経験も含めています。</p>
+    </div>
+  </section>
+
+  <section class="block" style="padding-top:32px;">
+    <div class="wrap">
+      <div class="editable-note">
+        編集メモ: 下のスタンプカードはサンプルです。国名・訪問時期・コメント・座標を自分の実際の経験に書き換えてください。座標を変更すると地図のピンも連動します(js/script.js 内の MAP_PINS を編集)。
+      </div>
+
+      <div class="stamp-grid">
+        <div class="stamp-card">
+          <div class="photo-slot">
+            <img class="photo" src="img/visited-sydney.jpg" alt="シドニーの写真" onerror="this.parentElement.classList.add('img-missing')">
+            <span class="slot-label">📷 画像を追加<br>img/visited-sydney.jpg<br>(推奨: 800×600px)</span>
+          </div>
+          <div class="card-body-row">
+            <div class="stamp small">
+              <div class="stamp-text">VISITED<span class="stamp-country">AUS</span>2024</div>
+            </div>
+            <div class="body">
+              <h3>オーストラリア(シドニー)</h3>
+              <span class="date">2024年 / 語学留学</span>
+              <p>大学の留学プログラムでシドニーに滞在。現地の学生や留学生との交流を通じて、実践的な英会話の経験を積んだ。</p>
+              <span class="coords">-33.8688, 151.2093</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="stamp-card">
+          <div class="photo-slot">
+            <img class="photo" src="img/visited-okinawa.jpg" alt="沖縄の写真" onerror="this.parentElement.classList.add('img-missing')">
+            <span class="slot-label">📷 画像を追加<br>img/visited-okinawa.jpg<br>(推奨: 800×600px)</span>
+          </div>
+          <div class="card-body-row">
+            <div class="stamp small">
+              <div class="stamp-text">VISITED<span class="stamp-country">JPN</span>2023</div>
+            </div>
+            <div class="body">
+              <h3>沖縄</h3>
+              <span class="date">2023年 / 家族旅行</span>
+              <p>美しい海と独自の文化に触れた旅行。首里城やひめゆりの塔など、歴史を学べるスポットも訪れた。</p>
+              <span class="coords">26.2124, 127.6809</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="stamp-card">
+          <div class="photo-slot">
+            <img class="photo" src="img/visited-seoul.jpg" alt="ソウルの写真" onerror="this.parentElement.classList.add('img-missing')">
+            <span class="slot-label">📷 画像を追加<br>img/visited-seoul.jpg<br>(推奨: 800×600px)</span>
+          </div>
+          <div class="card-body-row">
+            <div class="stamp small">
+              <div class="stamp-text">VISITED<span class="stamp-country">KOR</span>2022</div>
+            </div>
+            <div class="body">
+              <h3>韓国(ソウル)</h3>
+              <span class="date">2022年 / 友人との旅行</span>
+              <p>グルメと街歩きを楽しんだ2泊3日の旅。市場や下町の雰囲気が印象的だった。</p>
+              <span class="coords">37.5665, 126.9780</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" style="padding-top:0;">
+    <div class="wrap">
+      <h2>訪問地マップ</h2>
+      <p class="section-intro">アクセス場所が明確な訪問地を地図上に表示しています。ピンをクリックすると詳細が表示されます。</p>
+      <div class="map-shell">
+        <div id="map"></div>
+      </div>
+      <p class="map-caption">Map data &copy; OpenStreetMap contributors</p>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>&copy; 2026 旅の足跡 — 研究開発リテラシー 最終課題(個人制作)</span>
+    <span>Repository: <a href="#">GitHub</a></span>
+  </div>
+</footer>
+
+<script>
+  window.MAP_PINS = [
+    { name: "シドニー(オーストラリア)", lat: -33.8688, lng: 151.2093, note: "2024年・語学留学", color: "#a8382f" },
+    { name: "沖縄(日本)", lat: 26.2124, lng: 127.6809, note: "2023年・家族旅行", color: "#a8382f" },
+    { name: "ソウル(韓国)", lat: 37.5665, lng: 126.9780, note: "2022年・友人との旅行", color: "#a8382f" }
+  ];
+</script>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="js/script.js"></script>
+</body>
+</html>
