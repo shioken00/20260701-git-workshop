@@ -2,7 +2,7 @@
 置くだけで各ページのフォト枠に自動的に反映されます(コード修正は不要)。
 
 【トップページ index.html】
-  8B1658F7-ED16-4933-ABA4-B1102F336DCC.jpg          … トップのバナー写真(推奨 1600×900px)
+  hero-banner.jpg          … トップのバナー写真(推奨 1600×900px)
 
 【行った国 visited.html】
   visited-sydney.jpg       … オーストラリア(シドニー)
