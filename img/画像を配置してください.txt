@@ -14,8 +14,8 @@
 
 【行きたい場所 wishlist.html】
   wishlist-finland.jpg         … フィンランド
-  wishlist-siliconvalley.jpg   … アメリカ(シリコンバレー)
-  wishlist-rome.jpg            … イタリア(ローマ)
+  wishlist-newyork.jpg   … アメリカ(ニューヨーク)
+  wishlist-italia.jpg            … イタリア(ベネチア)
   wishlist-newzealand.jpg      … ニュージーランド
   ※すべて推奨 800×600px
 
