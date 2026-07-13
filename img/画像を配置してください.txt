@@ -6,8 +6,10 @@
 
 【行った国 visited.html】
   visited-sydney.jpg       … オーストラリア(シドニー)
-  visited-okinawa.jpg      … 沖縄
+  visited-turkey.jpg      … カッパドキア（トルコ）
   visited-seoul.jpg        … 韓国(ソウル)
+  visited-orland.jpg　　　　 … オーランド（アメリカ）
+  visited-hongkong.jpg　　　　 … 香港
   ※すべて推奨 800×600px
 
 【行きたい場所 wishlist.html】
